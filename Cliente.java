@@ -1,47 +1,30 @@
 import java.time.LocalDate;
-import java.util.HashMap;
-import java.util.Scanner;
 
 public class Cliente {
     // a classe cliente precisa de ter apenas os atributos do cliente
-    protected HashMap<String, String> cpfNome;
-    private String cpf;
-    protected String name;
-    private String gender;
+
+    private String cpf,email,name,gender;
     protected LocalDate dataRegister;
-
-    public Cliente(){
-        cpfNome = new HashMap<>();
-    }
-
-
-    public HashMap<String, String> getCpfNome() {
-        return cpfNome;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getName(String name) {
-        return this.name;
-    }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
     }
 
-    public String getCpf(String cpf) {
-        return this.cpf;
+    public String getCpf() {
+        return cpf;
+    }
+
+    public String setName(String name) {
+        this.name = name;
+        return name;
+    }
+
+    public String getName() {
+        return name;
     }
 
     public void setDataRegister(LocalDate dataRegister) {
         this.dataRegister = dataRegister;
-    }
-
-    public LocalDate getDataRegister() {
-
-        return dataRegister;
     }
 
     public String getGender() {
@@ -52,6 +35,15 @@ public class Cliente {
         this.gender = gender;
     }
 
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
     public void registration() {
     }
-}
+
+    }

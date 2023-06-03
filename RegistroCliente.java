@@ -1,32 +1,71 @@
 import java.time.format.DateTimeFormatter;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Scanner;
 
 public class RegistroCliente extends Cliente implements Registro{
+   /* 1- arrumar o cpf e o hashmap OK
+    2- arrumar o localDate OK
+    3- colocar cpf em String que passe numeros OK
+    4- colocar email em stringn OK
+    5- fazer o metodo final OK
+    6- fazer que o sistema crie mais cliente e armazenar
+    */
     Scanner read = new Scanner(System.in);
+    String dataRegistro;
+    private HashMap<String,String> cpfCliente;
+
+    public RegistroCliente() {
+        this.cpfCliente = new HashMap<>();
+    }
+
+    public void nameOfCostumer(){
+        System.out.print("Digite seu nome: ");
+        setName(read.next());
+    }
+    public void cpfOfCostumer() {
+
+        System.out.print("Digite seu cpf: ");
+        setCpf(read.next());
+    }
+    public void genderOfCostumer (){
+        System.out.println("Digite seu gênero: ");
+        setGender(read.next());
+
+    }
+    public void dataRegistroOfCostumer(){
+        System.out.println("Digite a data de registro: ");
+         dataRegistro = read.next();
+        DateTimeFormatter padraoEsperado = DateTimeFormatter.ofPattern("dd/MM/yyyy");
+        setDataRegister(dataRegister);
+    }
+    public void emailOfCostumer(){
+        System.out.println("Digite seu email: ");
+        setEmail(read.next());
+    }
     @Override
     public void registration() {
-            System.out.println("Para fazer o registro você precisa inserir os seguinte dados:");
-            System.out.println("Digte seu nome: ");
-            setName(read.next());
+        nameOfCostumer();
+        cpfOfCostumer();
+        genderOfCostumer();
+        emailOfCostumer();
+        dataRegistroOfCostumer();
 
-            System.out.println("Digite seu gênero: ");
-            setGender(read.next());
+        System.out.println("=================");
+        System.out.println("OS DADOS REGISTRADOS FORAM");
 
-            System.out.println("Digite a data de registro: ");
-            String dataRegistro = read.next();
-            DateTimeFormatter padraoEsperado = DateTimeFormatter.ofPattern("dd/MM/yyyy");
-            setDataRegister(dataRegister);
-
-            System.out.println("Digite seu cpf");
-            setCpf(read.next());
-           // cpfNome.put("Cpf:"+getCpf(cpf)+"....\n"," Nome:"+getName(name));
-
-
-            System.out.println("Seus dados cadastrados foram");
-            System.out.println(getCpfNome());
-            System.out.println("Gênero: "+getGender());
-            System.out.println("Data de registro: ");
-
+        cpfCliente.put(getCpf(), getName());
+        for (Map.Entry<String, String> entry : cpfCliente.entrySet()) {
+            System.out.println("Cpf: " + entry.getKey() + "\nNome: " + entry.getValue());
         }
+        System.out.println("Gênero: "+getGender());
+        System.out.println("Email: "+getEmail());
+       // System.out.println("Digite 1 para continuar"); complementos
+        System.out.println("================");
+        System.out.println("Parabéns você foi cadatrado");
+        System.out.println("Data do registro -- "+dataRegistro);
+        System.out.println("================");
+
     }
+}
 
