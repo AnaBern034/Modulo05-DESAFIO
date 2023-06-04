@@ -10,6 +10,9 @@ public class RegistroCliente extends Cliente implements Registro{
     4- colocar email em stringn OK
     5- fazer o metodo final OK
     6- fazer que o sistema crie mais cliente e armazenar
+    7- arrumar detalhes
+    8- como escolher o vendedor que for somar o produto , quano do o usuario entrar como cliente
+    os vendedores ja estarão cadastrados
     */
     Scanner read = new Scanner(System.in);
     String dataRegistro;
@@ -43,6 +46,14 @@ public class RegistroCliente extends Cliente implements Registro{
         System.out.println("Digite seu email: ");
         setEmail(read.next());
     }
+
+    public void showCpdAndName(){
+        cpfCliente.put(getCpf(), getName());
+        for (Map.Entry<String, String> entry : cpfCliente.entrySet()) {
+            System.out.println("Cpf: " + entry.getKey() + "\nNome: " + entry.getValue());
+        }
+
+    }
     @Override
     public void registration() {
         nameOfCostumer();
@@ -53,11 +64,7 @@ public class RegistroCliente extends Cliente implements Registro{
 
         System.out.println("=================");
         System.out.println("OS DADOS REGISTRADOS FORAM");
-
-        cpfCliente.put(getCpf(), getName());
-        for (Map.Entry<String, String> entry : cpfCliente.entrySet()) {
-            System.out.println("Cpf: " + entry.getKey() + "\nNome: " + entry.getValue());
-        }
+        showCpdAndName();
         System.out.println("Gênero: "+getGender());
         System.out.println("Email: "+getEmail());
        // System.out.println("Digite 1 para continuar"); complementos

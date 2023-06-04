@@ -1,8 +1,7 @@
 import java.time.LocalDate;
 
-public class Cliente {
-    // a classe cliente precisa de ter apenas os atributos do cliente
-
+public class Vendedor implements Registro {
+    // fazer interação para o cliente vender com objetivos e metas
     private String cpf,email,name,gender;
     protected LocalDate dataRegister;
 
@@ -46,4 +45,4 @@ public class Cliente {
     public void registration() {
     }
 
-    }
+}
