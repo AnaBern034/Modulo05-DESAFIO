@@ -1,7 +1,5 @@
 
 public class ProdutoFragrância {
-    // somar com outros produtos finais
-    //colocar a quantidade de produtos
     private String name;
     private double preco;
     private int codigo;
@@ -20,10 +18,10 @@ public class ProdutoFragrância {
         return preco;
     }
 
-
     public int getCodigo() {
         return codigo;
     }
-
 }
+
+
 

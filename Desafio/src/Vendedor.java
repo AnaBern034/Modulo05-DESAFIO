@@ -1,12 +1,14 @@
 import java.time.LocalDate;
 
 public class Vendedor implements Registro {
-    // fazer interação para o cliente vender com objetivos e metas
+    // fazer interação para o vendedor vender com objetivos e metas
+
     private String cpf,email,name,gender;
     protected LocalDate dataRegister;
 
-    public void setCpf(String cpf) {
+    public String setCpf(String cpf) {
         this.cpf = cpf;
+        return cpf;
     }
 
     public String getCpf() {
@@ -30,12 +32,14 @@ public class Vendedor implements Registro {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public String setGender(String gender) {
         this.gender = gender;
+        return gender;
     }
 
-    public void setEmail(String email) {
+    public String setEmail(String email) {
         this.email = email;
+        return email;
     }
 
     public String getEmail() {

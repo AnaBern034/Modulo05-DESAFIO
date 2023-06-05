@@ -1,10 +1,9 @@
 import java.time.LocalDate;
 
 public class Cliente {
-    // a classe cliente precisa de ter apenas os atributos do cliente
-
     private String cpf,email,name,gender;
     protected LocalDate dataRegister;
+
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
