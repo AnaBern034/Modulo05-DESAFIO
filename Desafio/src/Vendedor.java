@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 
-public class Vendedor implements Registro {
-    // fazer interação para o vendedor vender com objetivos e metas
+public class Vendedor {
+    // fazer interação para o vendedor vender com objetivos e metas OK
 
     private String cpf,email,name,gender;
     protected LocalDate dataRegister;
@@ -44,9 +44,6 @@ public class Vendedor implements Registro {
 
     public String getEmail() {
         return email;
-    }
-
-    public void registration() {
     }
 
 }

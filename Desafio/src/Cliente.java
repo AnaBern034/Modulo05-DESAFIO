@@ -1,9 +1,29 @@
 import java.time.LocalDate;
+import java.util.ArrayList;
+
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class Cliente {
     private String cpf,email,name,gender;
     protected LocalDate dataRegister;
 
+    Map<ProdutoFragrância, Integer > produtoEscolhido = new HashMap<>();
+
+
+    public Map<ProdutoFragrância, Integer> getProdutoEscolhido() {
+        return produtoEscolhido;
+    }
+
+    public void setCompra(ProdutoFragrância produto, int quantidade) {
+        produtoEscolhido.put(produto,quantidade);
+    }
+
+    public Cliente(){
+        this.email=getEmail();
+        this.gender = getGender();
+    }
 
     public void setCpf(String cpf) {
         this.cpf = cpf;
@@ -30,12 +50,14 @@ public class Cliente {
         return gender;
     }
 
-    public void setGender(String gender) {
+    public String setGender(String gender) {
         this.gender = gender;
+        return gender;
     }
 
-    public void setEmail(String email) {
+    public String setEmail(String email) {
         this.email = email;
+        return email;
     }
 
     public String getEmail() {
