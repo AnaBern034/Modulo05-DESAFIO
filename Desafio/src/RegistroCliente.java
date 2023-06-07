@@ -181,10 +181,10 @@ public class RegistroCliente extends Cliente implements Registro {
     } public void cadastroUnico(){
         Cliente cliente = new Cliente();
 
-        // nomeCliente(cliente);
+         nomeCliente(cliente);
         cpfDoCliente(cliente);
-//        dataRegistroCliente(cliente);
-//        emailCliente(cliente);
+        dataRegistroCliente(cliente);
+        emailCliente(cliente);
 
 
         setClientesRegistrados(cliente);

@@ -145,11 +145,11 @@ public class RegistroVendedor extends Vendedor implements Registro{
 }
 public void cadastroUnico(){
     Vendedor vendedor = new Vendedor();
-   // nomeVendedor(vendedor);
+   nomeVendedor(vendedor);
     cpfVendedor(vendedor);
-//    generoVendedor(vendedor);
-//     emailVendedor(vendedor);
-//    dataRegistroVendedor(vendedor);
+    generoVendedor(vendedor);
+     emailVendedor(vendedor);
+    dataRegistroVendedor(vendedor);
 
     vendedoresRegistrados.add(vendedor);
 
