@@ -22,11 +22,11 @@ public class RegistroVendedor extends Vendedor implements Registro{
         this.vendedoresRegistrados = new ArrayList<>();
     }
 
-    public void nameOfSeller(Vendedor vendedor){
+    public void nomeVendedor(Vendedor vendedor){
         System.out.print("Digite seu nome: ");
         setName(read.next());
     }
-    public void cpfOfSeller(Vendedor vendedor) {
+    public void cpfVendedor(Vendedor vendedor) {
         System.out.print("Digite seu cpf sem o simbolo que separa os ultimos dois digitos: ");
         String cpfInput = read.next();
         boolean valido = true;
@@ -40,16 +40,16 @@ public class RegistroVendedor extends Vendedor implements Registro{
             setCpf(cpfInput);
         } else {
             System.out.println("Opção inválida. Digite apenas números para o CPF.");
-            cpfOfSeller(vendedor);
+            cpfVendedor(vendedor);
 
         }
     }
-    public void genderOfSeller(Vendedor vendedor){
+    public void generoVendedor(Vendedor vendedor){
         System.out.print("Digite seu gênero: ");
         String gender = read.next();
         setGender(gender);
     }
-    public void dataRegistroOfSeller(Vendedor vendedor){
+    public void dataRegistroVendedor(Vendedor vendedor){
         boolean dataValida = false;
         while (!dataValida){
             System.out.print("Digite a data de registro: ");
@@ -72,7 +72,7 @@ public class RegistroVendedor extends Vendedor implements Registro{
             }
         }
     }
-    public void emailOfSeller(Vendedor vendedor){
+    public void emailVendedor(Vendedor vendedor){
 
         System.out.print("Digite seu email: ");
         String email= read.next();
@@ -92,13 +92,13 @@ public class RegistroVendedor extends Vendedor implements Registro{
         return email.contains(".") && email.contains("@");
     }
 
-    public void showCpfAndName(Vendedor vendedor ){
+    public void mostrarNomeCPF(Vendedor vendedor ){
         cpfCliente.put(getCpf(), getName());
         for (Map.Entry<String, String> entry : cpfCliente.entrySet()) {
             System.out.println("Cpf: " + entry.getKey() + "\nNome: " + entry.getValue());
         }
     }
-    public void showGenderAndEmail(Vendedor vendedor){
+    public void mostraEmailGenero(Vendedor vendedor){
         GenderAndEmail.put(getEmail(),getGender());
         for (Map.Entry<String,String>entry: GenderAndEmail.entrySet()){
             System.out.println("Email: " + entry.getKey() + "\nGenêro " + entry.getValue());
@@ -112,11 +112,11 @@ public class RegistroVendedor extends Vendedor implements Registro{
         while (continuarCadastro) {
 
             Vendedor vendedor = new Vendedor();
-            nameOfSeller(vendedor);
-            cpfOfSeller(vendedor);
-            genderOfSeller(vendedor);
-            emailOfSeller(vendedor);
-            dataRegistroOfSeller(vendedor);
+            nomeVendedor(vendedor);
+            cpfVendedor(vendedor);
+            generoVendedor(vendedor);
+            emailVendedor(vendedor);
+            dataRegistroVendedor(vendedor);
 
             vendedoresRegistrados.add(vendedor);
 
@@ -139,17 +139,17 @@ public class RegistroVendedor extends Vendedor implements Registro{
     public void mostrarVededores(){
         for (Vendedor vendedor : vendedoresRegistrados){
         System.out.println("=================");
-        showCpfAndName(vendedor);
-        showGenderAndEmail(vendedor);
+        mostrarNomeCPF(vendedor);
+        mostraEmailGenero(vendedor);
     }
 }
 public void cadastroUnico(){
     Vendedor vendedor = new Vendedor();
-    nameOfSeller(vendedor);
-    cpfOfSeller(vendedor);
-    genderOfSeller(vendedor);
-    emailOfSeller(vendedor);
-    dataRegistroOfSeller(vendedor);
+   // nomeVendedor(vendedor);
+    cpfVendedor(vendedor);
+//    generoVendedor(vendedor);
+//     emailVendedor(vendedor);
+//    dataRegistroVendedor(vendedor);
 
     vendedoresRegistrados.add(vendedor);
 

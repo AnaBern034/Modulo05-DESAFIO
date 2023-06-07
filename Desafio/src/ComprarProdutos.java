@@ -132,27 +132,28 @@ public class ComprarProdutos {
                 System.out.println("Digite o CPF do vendedor que te atendeu:");
                 String cpf = read.nextLine();
                 read.nextLine();
+
                 for (Vendedor vendedor: registroVendedor.getVendedoresRegistrados())
                     if (cpf.equals(registroVendedor.getCpf())){
                         vendedorEncontrado=true;
                         System.out.println("Obrigada pela informação!!");
                         break;
-                    }else{
-                        System.out.println("cpf inválido,digite novamente");
-                        cpf= read.nextLine();
+                    } else {
+                        System.out.println("cpf inválido");
                     }
             }
-        }
-        public void quemComprouProduto(Cliente cliente){
+            }
+        public void quemComprouProduto(RegistroCliente registroCliente){
             System.out.println("Digite o cpf: ");
              String cpf = read.nextLine();
              read.nextLine();
 
-             if (cpf.equals(cliente.getCpf()))
-            System.out.println("Os produtos escolhidos foram");{
-                cliente.getProdutoEscolhido(cliente);
-            }
+            for (Cliente clienteRegistrado : registroCliente.getClientesRegistrados())
+            if (cpf.equals(clienteRegistrado.getCpf())){
+            System.out.println("Os produtos escolhidos foram");
+            registroCliente.getProdutoEscolhido(clienteRegistrado);
         }
     }
+}
 
 

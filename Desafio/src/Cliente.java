@@ -4,7 +4,7 @@ import java.util.List;
 
 
 public class Cliente {
-    private String cpf,email,name,gender;
+    private String cpf,email,nome, genero;
     protected LocalDate dataRegister;
 
    List<ProdutoFragrância> produtoEscolhido = new ArrayList<>();
@@ -17,17 +17,9 @@ public class Cliente {
         }
     }
 
-    public List<ProdutoFragrância> getProdutoEscolhido(Cliente cpf) {
-        System.out.println("Os produtos escolhidos foram");
-        for (ProdutoFragrância produto: produtoEscolhido) {
-            System.out.println(produto.getName() + " -R$" + produto.getPreco());
-        }
-        return produtoEscolhido;
-    }
-
     public Cliente(){
         this.email=getEmail();
-        this.gender = getGender();
+        this.genero = getGender();
     }
 
     public void setCpf(String cpf) {
@@ -38,12 +30,13 @@ public class Cliente {
         return cpf;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNome(String nome) {
+        this.nome = nome;
     }
 
-    public String getName() {
-        return name;
+    public String getNome() {
+
+        return nome;
     }
 
     public void setDataRegister(LocalDate dataRegister) {
@@ -51,11 +44,11 @@ public class Cliente {
     }
 
     public String getGender() {
-        return gender;
+        return genero;
     }
 
     public void setGender(String gender) {
-        this.gender = gender;
+        this.genero = gender;
     }
 
     public void setEmail(String email) {

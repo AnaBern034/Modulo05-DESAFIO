@@ -13,6 +13,13 @@ public class RegistroCliente extends Cliente implements Registro {
     private HashMap<String, String> cpfCliente;
     private HashMap<String, String> gendAndEmail;
     private List<Cliente> clientesRegistrados=new ArrayList<>();
+    public List<ProdutoFragrância> getProdutoEscolhido(Cliente cpf) {
+        System.out.println("Os produtos escolhidos foram");
+        for (ProdutoFragrância produto: produtoEscolhido) {
+            System.out.println(produto.getName() + " -R$" + produto.getPreco());
+        }
+        return produtoEscolhido;
+    }
 
 
     public RegistroCliente() {
@@ -20,13 +27,13 @@ public class RegistroCliente extends Cliente implements Registro {
        // this.clientesRegistrados = new ArrayList<>();
         this.gendAndEmail = new HashMap<>();
     }
-    public void nameOfCostumer(Cliente cliente) {
+    public void nomeCliente(Cliente cliente) {
 
         System.out.print("Digite seu nome: ");
-        cliente.setName(read.next());
+        cliente.setNome(read.next());
     }
 
-    public void cpfOfCostumer(Cliente cliente) {
+    public void cpfDoCliente(Cliente cliente) {
 
         System.out.print("Digite seu cpf sem o simbolo que separa os ultimos dois digitos: ");
         String cpfInput = read.next();
@@ -41,17 +48,17 @@ public class RegistroCliente extends Cliente implements Registro {
             cliente.setCpf(cpfInput);
         } else {
             System.out.println("Opção inválida. Digite apenas números para o CPF.");
-            cpfOfCostumer(cliente);
+            cpfDoCliente(cliente);
         }
     }
 
-    public void genderOfCostumer(Cliente cliente) {
+    public void generoDoCliente(Cliente cliente) {
         System.out.print("Digite seu genêro: ");
         setGender(read.next());
 
     }
 
-    public void dataRegistroOfCostumer(Cliente cliente) {
+    public void dataRegistroCliente(Cliente cliente) {
         boolean dataValida = false;
         while (!dataValida){
         System.out.print("Digite a data de registro: ");
@@ -76,7 +83,7 @@ public class RegistroCliente extends Cliente implements Registro {
     }
     }
 
-    public void emailOfCostumer(Cliente cliente) {
+    public void emailCliente(Cliente cliente) {
         System.out.print("Digite seu email: ");
         String email= read.next();
 
@@ -95,9 +102,9 @@ public class RegistroCliente extends Cliente implements Registro {
         return email.contains(".") && email.contains("@");
     }
 
-    public void showCpfAndName(Cliente cliente) {
+    public void mostrarCPFeNome(Cliente cliente) {
         if (!cpfCliente.containsKey(cliente.getCpf())){
-            cpfCliente.put(cliente.getCpf(),cliente.getName());
+            cpfCliente.put(cliente.getCpf(),cliente.getNome());
         }
         for (Map.Entry<String, String> entry : cpfCliente.entrySet()) {
             System.out.println("Cpf: " + entry.getKey() + "\nNome: " + entry.getValue());
@@ -121,11 +128,14 @@ public class RegistroCliente extends Cliente implements Registro {
 
             Cliente cliente = new Cliente();
 
-             //nameOfCostumer(cliente);
-             cpfOfCostumer(cliente);
-//             genderOfCostumer(cliente);
-//            emailOfCostumer(cliente);
-//            dataRegistroOfCostumer(cliente);
+           // nomeCliente(cliente);
+            cpfDoCliente(cliente);
+//            dataRegistroCliente(cliente);
+//            emailCliente(cliente);
+
+
+            generoDoCliente(cliente);
+
 
             setClientesRegistrados(cliente);
 
@@ -143,32 +153,52 @@ public class RegistroCliente extends Cliente implements Registro {
             }
         }
             System.out.println("Os clientes registrados foram: ");
-            getClientesRegistrados();
+           mostrarClientesRegistrados();
     }
 
     public void setClientesRegistrados(Cliente clienteRegistrado) {
         clientesRegistrados.add(clienteRegistrado);
+
     }
 
-    public void   getClientesRegistrados() {
+    public List<Cliente> getClientesRegistrados() {
+        return clientesRegistrados;
+    }
+
+    public void mostrarClientesRegistrados() {
             for (Cliente cliente: clientesRegistrados){
-                showCpfAndName(cliente);
+                mostrarCPFeNome(cliente);
                showGenderAndEmail(cliente);
             }
-
     }
-    public Cliente buscarCliente (String cpf) {
+    public Cliente buscarCliente (Cliente cpf) {
         for (Cliente cliente : clientesRegistrados){
             if (cliente.getCpf().equals(cpf)) {
                 return cliente;
             }
-//        for (int i=0; i < clientesRegistrados.size();i++){
-//            if (clientesRegistrados.get(i).getCpf().toLowerCase().equals(cpf.toLowerCase())){
-//                return clientesRegistrados.get(i);
-            }
+        }
         return null;
+    } public void cadastroUnico(){
+        Cliente cliente = new Cliente();
+
+        // nomeCliente(cliente);
+        cpfDoCliente(cliente);
+//        dataRegistroCliente(cliente);
+//        emailCliente(cliente);
+
+
+        setClientesRegistrados(cliente);
+
+        System.out.println("=========================");
+        System.out.println("OS DADOS FORAM REGISTRADOS");
+        System.out.println("Parabéns você foi cadatrado");
+        System.out.println("Data do registro -- " + dataRegistro);
+        System.out.println("=============================");
+
+
 
     }
 }
+
 
 
