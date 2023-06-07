@@ -1,23 +1,28 @@
 import java.time.LocalDate;
 import java.util.ArrayList;
-
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 public class Cliente {
     private String cpf,email,name,gender;
     protected LocalDate dataRegister;
 
-    Map<ProdutoFragrância, Integer > produtoEscolhido = new HashMap<>();
+   List<ProdutoFragrância> produtoEscolhido = new ArrayList<>();
 
-
-    public Map<ProdutoFragrância, Integer> getProdutoEscolhido() {
-        return produtoEscolhido;
-    }
 
     public void setCompra(ProdutoFragrância produto, int quantidade) {
-        produtoEscolhido.put(produto,quantidade);
+        for (int i = 0; i < quantidade; i++) {
+            produtoEscolhido.add(produto);
+
+        }
+    }
+
+    public List<ProdutoFragrância> getProdutoEscolhido(Cliente cpf) {
+        System.out.println("Os produtos escolhidos foram");
+        for (ProdutoFragrância produto: produtoEscolhido) {
+            System.out.println(produto.getName() + " -R$" + produto.getPreco());
+        }
+        return produtoEscolhido;
     }
 
     public Cliente(){
@@ -33,9 +38,8 @@ public class Cliente {
         return cpf;
     }
 
-    public String setName(String name) {
+    public void setName(String name) {
         this.name = name;
-        return name;
     }
 
     public String getName() {
@@ -50,14 +54,12 @@ public class Cliente {
         return gender;
     }
 
-    public String setGender(String gender) {
+    public void setGender(String gender) {
         this.gender = gender;
-        return gender;
     }
 
-    public String setEmail(String email) {
+    public void setEmail(String email) {
         this.email = email;
-        return email;
     }
 
     public String getEmail() {

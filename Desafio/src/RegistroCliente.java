@@ -8,8 +8,6 @@ public class RegistroCliente extends Cliente implements Registro {
   /* 8- arrumar detalhes OK
     9- Fazer um try catch para cada OK
     */
-
-
     Scanner read = new Scanner(System.in);
     String dataRegistro;
     private HashMap<String, String> cpfCliente;
@@ -22,12 +20,10 @@ public class RegistroCliente extends Cliente implements Registro {
        // this.clientesRegistrados = new ArrayList<>();
         this.gendAndEmail = new HashMap<>();
     }
-
-
     public void nameOfCostumer(Cliente cliente) {
 
         System.out.print("Digite seu nome: ");
-        setName(read.next());
+        cliente.setName(read.next());
     }
 
     public void cpfOfCostumer(Cliente cliente) {
@@ -42,7 +38,7 @@ public class RegistroCliente extends Cliente implements Registro {
             }
         }
         if (valido) {
-            setCpf(cpfInput);
+            cliente.setCpf(cpfInput);
         } else {
             System.out.println("Opção inválida. Digite apenas números para o CPF.");
             cpfOfCostumer(cliente);
@@ -72,7 +68,7 @@ public class RegistroCliente extends Cliente implements Registro {
             }
             dataRegistro= data.format(padraoEsperado);
             dataValida= true;
-            setDataRegister(dataRegister);
+            cliente.setDataRegister(dataRegister);
         } catch (DateTimeParseException erro){
             System.out.println("Formato de data inválido, Digite novamente");
         }
@@ -93,42 +89,45 @@ public class RegistroCliente extends Cliente implements Registro {
             emailValido = validarEmail(email);
 
         }
-        setEmail(email);
+        cliente.setEmail(email);
     }
     private boolean validarEmail(String email){
         return email.contains(".") && email.contains("@");
     }
 
     public void showCpfAndName(Cliente cliente) {
-        cpfCliente.put(getCpf(), getName());
+        if (!cpfCliente.containsKey(cliente.getCpf())){
+            cpfCliente.put(cliente.getCpf(),cliente.getName());
+        }
         for (Map.Entry<String, String> entry : cpfCliente.entrySet()) {
             System.out.println("Cpf: " + entry.getKey() + "\nNome: " + entry.getValue());
         }
 
     }
     public void showGenderAndEmail(Cliente cliente) {
-        gendAndEmail.put(getEmail(), getGender());
+        gendAndEmail.put(cliente.getGender(),cliente.getEmail());
         for (Map.Entry<String, String> entry : gendAndEmail.entrySet()) {
             System.out.println("Email: " + entry.getKey() + "\nGênero: " + entry.getValue());
         }
 
     }
 
-    Cliente cliente = new Cliente();
+
     @Override
     public void registration() {
 
         boolean continuarCadastrando = true;
         while (continuarCadastrando) {
 
+            Cliente cliente = new Cliente();
 
-            //nameOfCostumer(cliente);
-            cpfOfCostumer(cliente);
-          //  genderOfCostumer(cliente);
-           // emailOfCostumer(cliente);
-           // dataRegistroOfCostumer(cliente);
+             //nameOfCostumer(cliente);
+             cpfOfCostumer(cliente);
+//             genderOfCostumer(cliente);
+//            emailOfCostumer(cliente);
+//            dataRegistroOfCostumer(cliente);
 
-            clientesRegistrados.add(cliente);
+            setClientesRegistrados(cliente);
 
             System.out.println("=========================");
             System.out.println("OS DADOS FORAM REGISTRADOS");
@@ -136,36 +135,37 @@ public class RegistroCliente extends Cliente implements Registro {
             System.out.println("Data do registro -- " + dataRegistro);
             System.out.println("=============================");
 
-            setClientesRegistrados(cliente);
+
             System.out.println("Deseja fazer mais cadastro? (S/N)");
             String opcap = read.next();
             if (opcap.equalsIgnoreCase("N")) {
                 continuarCadastrando = false;
             }
-
+        }
             System.out.println("Os clientes registrados foram: ");
             getClientesRegistrados();
-        }
     }
 
     public void setClientesRegistrados(Cliente clienteRegistrado) {
         clientesRegistrados.add(clienteRegistrado);
     }
 
-    public List<Cliente> getClientesRegistrados() {
-        for (Cliente cliente : clientesRegistrados) {
-            showCpfAndName(cliente);
-            showGenderAndEmail(cliente);
-        }
-        return clientesRegistrados;
+    public void   getClientesRegistrados() {
+            for (Cliente cliente: clientesRegistrados){
+                showCpfAndName(cliente);
+               showGenderAndEmail(cliente);
+            }
+
     }
     public Cliente buscarCliente (String cpf) {
-        clientesRegistrados.stream().forEach(cliente1 -> cliente1.getCpf().equals());
-//        for (int i=0; i <= clientesRegistrados.size();i++){
-//            if (clientesRegistrados.get(i).getCpf().equalsIgnoreCase(cpf)){
+        for (Cliente cliente : clientesRegistrados){
+            if (cliente.getCpf().equals(cpf)) {
+                return cliente;
+            }
+//        for (int i=0; i < clientesRegistrados.size();i++){
+//            if (clientesRegistrados.get(i).getCpf().toLowerCase().equals(cpf.toLowerCase())){
 //                return clientesRegistrados.get(i);
-//            }
-//        }
+            }
         return null;
 
     }
